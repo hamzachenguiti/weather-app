@@ -1,0 +1,246 @@
+/* Global rules */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  --main-transition: .3s;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  background: url(../assets/bg.jpg) no-repeat center center / cover;
+  color: #fff;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .6);
+  z-index: -1;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  outline: none;
+  border: none;
+}
+
+.btn {
+  padding: .5rem 1rem;
+  text-transform: capitalize;
+  color: #fff;
+  background-color: #ec6e4c;
+  border: 1px solid #ec6e4c;
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+  transition: background-color var(--main-transition);
+  -webkit-transition: background-color var(--main-transition);
+  -moz-transition: background-color var(--main-transition);
+  -ms-transition: background-color var(--main-transition);
+  -o-transition: background-color var(--main-transition);
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: transparent;
+}
+
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+/* End global rules */
+
+/* Start Header */
+header {
+  padding: 1rem;
+  position: relative;
+}
+
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header form input {
+  padding: .5rem 1rem;
+  margin-right: .5rem;
+  border: 1px solid #fefefe;
+  border-radius: 25px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
+}
+
+/* End header */
+
+/* Start main */
+
+main .container {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 992px) {
+  main .container {
+    gap: 3rem;
+  }
+}
+
+main .top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+main .today-weather {
+  margin: 3rem auto;
+  padding: 1rem 0;
+  width: fit-content;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, .1);
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+main .today-weather .weather {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+main .today-weather .details h1 {
+  margin-bottom: 0;
+  display: inline-block;
+  font-size: 2.5rem;
+  line-height: 1;
+  position: relative;
+  top: -2rem;
+}
+
+main .today-weather .details h2 {
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+  text-align: left;
+  font-weight: 450;
+}
+
+main .today-weather .details img {
+  width: 90px;
+}
+
+main .today-weather .details p {
+  margin-bottom: .5rem;
+  font-size: 1.3rem;
+}
+
+main .top .map {
+  width: 375px;
+  height: 300px;
+  margin-top: 3rem;
+}
+
+/* Start Weather forecast */
+main .weather-forecast {
+  padding: 2rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+main .weather-forecast .weather-forecast-item {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, .1);
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  transition: var(--main-transition) ease-in-out;
+  -webkit-transition: var(--main-transition) ease-in-out;
+  -moz-transition: var(--main-transition) ease-in-out;
+  -ms-transition: var(--main-transition) ease-in-out;
+  -o-transition: var(--main-transition) ease-in-out;
+}
+
+main .weather-forecast .weather-forecast-item h2 {
+  font-weight: 450;
+}
+
+main .weather-forecast .weather-forecast-item p {
+  margin-bottom: .5rem;
+}
+
+@media (max-width: 991px) {
+  .today-weather {
+    padding: 1rem !important;
+  }
+  .today-weather .weather {
+    gap: 0 !important;
+  }
+}
+/* End main */

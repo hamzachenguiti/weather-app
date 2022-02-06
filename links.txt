@@ -1,0 +1,2 @@
+Map - https://openweathermap.org/weathermap?basemap=map&cities=true&layer=temperature&lat=33.8&lon=2.8651&zoom=9
+Search by location - https://api.openweathermap.org/data/2.5/weather?q=algiers&exclude=hourly,minutely&units=metric&appid=2a52edbb2af941ad8cc08ee23866301c
