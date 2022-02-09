@@ -11,13 +11,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Jim+Nightshade&family=Poppins:wght@200;300;400;500;600;800&display=swap" rel="stylesheet">
-  <!-- Font awesome -->
-  <link rel="stylesheet" href="./css/all.min.css">
+  <!-- Mapbox-->
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet' />
   <!-- Main CSS file -->
   <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
-  <header>
+  <header id="header">
     <div class="container">
       <form id="form"> 
         <input type="search" placeholder="Enter location" id="search">
@@ -38,12 +38,10 @@
               <p>Night - 14 &#8451;</p>
             </div>
           </div>
-          <a href="https://openweathermap.org/weathermap?basemap=map&cities=true&layer=temperature&lat=33.8&lon=2.8651&zoom=9" target="_blank">preview weathermap</a>
+          <a href="weather-forecast" target="_blank">next 7 days forecast</a>
         </div>
 
-        <div class="map">
-          map
-        </div>
+        <div id="map" class="map"></div>
       </section>
 
       <section class="weather-forecast" id="weather-forecast">
@@ -70,7 +68,7 @@
   </main>
 
   <!-- Scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js'></script>
   <script src="./js/app.js"></script>
 </body>
 </html>

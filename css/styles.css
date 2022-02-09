@@ -7,6 +7,7 @@
 
 :root {
   --main-transition: .3s;
+  --main-color: #ec6e4c;
 }
 
 html {
@@ -21,7 +22,7 @@ body {
   position: relative;
 }
 
-body::before {
+body::after {
   content: "";
   position: absolute;
   top: 0;
@@ -53,8 +54,8 @@ input {
   padding: .5rem 1rem;
   text-transform: capitalize;
   color: #fff;
-  background-color: #ec6e4c;
-  border: 1px solid #ec6e4c;
+  background-color: var(--main-color);
+  border: 1px solid var(--main-color);
   border-radius: 1rem;
   -webkit-border-radius: 1rem;
   -moz-border-radius: 1rem;
@@ -110,10 +111,18 @@ header .container {
   justify-content: center;
 }
 
-header form input {
+header form {
+  width: 80%;
+  text-align: center;
+}
+
+header form input[type="search"] {
+  width: 40%;
   padding: .5rem 1rem;
   margin-right: .5rem;
   border: 1px solid #fefefe;
+  color: #fefefe;
+  background-color: transparent;
   border-radius: 25px;
   -webkit-border-radius: 25px;
   -moz-border-radius: 25px;
@@ -121,19 +130,24 @@ header form input {
   -o-border-radius: 25px;
 }
 
+header form input[type="search"]::placeholder {
+  color: #fefefe;
+}
+
+@media (max-width: 767px) {
+  header form input[type="search"] {
+    width: 90%;
+  }
+  header form input[type="submit"] {
+    display: none;
+  }
+}
 /* End header */
 
 /* Start main */
-
 main .container {
   display: flex;
   flex-direction: column;
-}
-
-@media (min-width: 992px) {
-  main .container {
-    gap: 3rem;
-  }
 }
 
 main .top {
@@ -144,9 +158,8 @@ main .top {
 
 main .today-weather {
   margin: 3rem auto;
-  padding: 1rem 0;
+  padding: 1rem;
   width: fit-content;
-  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -193,9 +206,52 @@ main .today-weather .details p {
 }
 
 main .top .map {
-  width: 375px;
-  height: 300px;
   margin-top: 3rem;
+  height: 286px;
+  flex: 1;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+@media (min-width: 992px) {
+  main .container {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 991px) {
+  main .top {
+    flex-direction: column;
+  }
+  main .top .today-weather {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+  main .top .map {
+    flex: auto;
+    margin-top: 0;
+    margin-bottom: 3rem;
+  }
+}
+
+@media (max-width: 767px) {
+  main .today-weather {
+    padding: 2rem 1rem !important;
+    text-align: center;
+  }
+  main .today-weather .details h1 {
+    font-size: 2rem;
+  }
+  main .today-weather .details h2 {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+  main .today-weather .details p {
+    font-size: 1rem;
+  }
 }
 
 /* Start Weather forecast */
@@ -243,4 +299,5 @@ main .weather-forecast .weather-forecast-item p {
     gap: 0 !important;
   }
 }
+/* End weather forecast */
 /* End main */

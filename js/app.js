@@ -13,6 +13,7 @@ class App {
     navigator.geolocation.getCurrentPosition(success => {
       let { latitude, longitude } = success.coords;
       this.fetchWeather(latitude, longitude);
+      this.settingMap(latitude, longitude);
     });
   }
 
@@ -29,8 +30,9 @@ class App {
         })
         .then(data => {
           this.fetchWeather(data.coord.lat, data.coord.lon);
+          this.settingMap(data.coord.lat, data.coord.lon);
         })
-        .catch(console.error("Something went wrong"));
+        .catch(console.err);
 
       this.searchInput.value = "";
     }
@@ -48,11 +50,10 @@ class App {
       .then(data => {
         this.displayWeather(data);
       })
-      .catch(console.error("Something went wrong"));
+      .catch(console.err);
   }
 
   displayWeather(data) {
-    console.log(data);
     let forecast = "";
     data.daily.map((day, index) => {
       let date = new Date(day.dt * 1000);
@@ -84,17 +85,23 @@ class App {
     });
     this.weatherForecast.innerHTML = forecast;
   }
+
+  settingMap(latitude, longitude) {
+    mapboxgl.accessToken =
+      "pk.eyJ1IjoiaGFtemFjaDk3IiwiYSI6ImNrcWxiMHRxcDBibzgyb3BkaDd5ZDZ6ajgifQ.RM8SP3S1UcuUnX7W81OGuQ";
+    const map = new mapboxgl.Map({
+      container: "map",
+      style: "mapbox://styles/mapbox/streets-v11",
+      center: [ longitude, latitude ],
+      zoom: 4,
+    });
+  }
 }
 
-function eventListeners() {
-  const weather = new App();
+const weather = new App();
 
-  // Weather
-  weather.currentPosition();
-  weather.form.addEventListener("submit", function(ev) {
-    ev.preventDefault();
-    weather.getDataByCityName();
-  });
-}
-
-document.addEventListener("DOMContentLoaded", eventListeners);
+weather.currentPosition();
+weather.form.addEventListener("submit", function(ev) {
+  ev.preventDefault();
+  weather.getDataByCityName();
+});
