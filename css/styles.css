@@ -137,9 +137,7 @@ header form input[type="search"]::placeholder {
 @media (max-width: 767px) {
   header form input[type="search"] {
     width: 90%;
-  }
-  header form input[type="submit"] {
-    display: none;
+    margin-bottom: 1rem;
   }
 }
 /* End header */
