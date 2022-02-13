@@ -93,7 +93,7 @@ class App {
       container: "map",
       style: "mapbox://styles/mapbox/streets-v11",
       center: [ longitude, latitude ],
-      zoom: 4,
+      zoom: 4.5,
     });
   }
 }
