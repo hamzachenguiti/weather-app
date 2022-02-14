@@ -17,7 +17,7 @@ html {
 body {
   min-height: 100vh;
   font-family: 'Poppins', sans-serif;
-  background: url(../assets/bg.jpg) no-repeat center center / cover;
+  background: url(../assets/bg3.jpg) no-repeat center center / cover;
   color: #fff;
   position: relative;
 }
@@ -70,7 +70,7 @@ input {
 }
 
 .btn:hover {
-  background-color: transparent;
+  background: none;
 }
 
 .container {
@@ -122,7 +122,7 @@ header form input[type="search"] {
   margin-right: .5rem;
   border: 1px solid #fefefe;
   color: #fefefe;
-  background-color: transparent;
+  background: none;
   border-radius: 25px;
   -webkit-border-radius: 25px;
   -moz-border-radius: 25px;

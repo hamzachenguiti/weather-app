@@ -65,8 +65,8 @@ class App {
             <img src="http://openweathermap.org/img/wn/${day.weather[0]
               .icon}@2x.png" alt=${day.weather[0].description}>
             <h2>${date.toDateString()}</h2>
-            <p>Day - ${parseInt(day.temp.day)} &#8451;</p>
-            <p>Night - ${parseInt(day.temp.night)} &#8451;</p>
+            <p>Day: ${parseInt(day.temp.day)} &#8451;</p>
+            <p>Night: ${parseInt(day.temp.night)} &#8451;</p>
           </div>
         </div>
         <a href="#weather-forecast" class="btn">next 7 days forecast</a>
@@ -77,8 +77,8 @@ class App {
             <h2>${date.toDateString()}</h2>
             <img src="http://openweathermap.org/img/wn/${day.weather[0]
               .icon}@2x.png" alt=${day.weather[0].description}@>
-            <p>Day - ${parseInt(day.temp.day)} &#8451;</p>
-            <p>Night - ${parseInt(day.temp.night)} &#8451;</p>
+            <p>Day: ${parseInt(day.temp.day)} &#8451;</p>
+            <p>Night: ${parseInt(day.temp.night)} &#8451;</p>
           </div>
         `;
       }
@@ -93,7 +93,7 @@ class App {
       container: "map",
       style: "mapbox://styles/mapbox/streets-v11",
       center: [ longitude, latitude ],
-      zoom: 4,
+      zoom: 5,
     });
   }
 }
