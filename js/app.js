@@ -1,12 +1,12 @@
 class App {
-  constructor() {
+  constructor(key, language, units) {
     this.form = document.querySelector("form");
     this.searchInput = document.getElementById("search");
     this.todayWeather = document.getElementById("today-weather");
     this.weatherForecast = document.getElementById("weather-forecast");
-    this.key = "2a52edbb2af941ad8cc08ee23866301c";
-    this.lang = "en";
-    this.units = "metric";
+    this.key = key;
+    this.language = language;
+    this.units = units;
   }
 
   currentPosition() {
@@ -21,7 +21,7 @@ class App {
     let location = this.searchInput.value;
     if (location !== "") {
       let url = `http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${this
-        .key}&units=${this.units}&lang=${this.lang}`;
+        .key}&units=${this.units}&lang=${this.language}`;
 
       fetch(url)
         .then(resp => {
@@ -29,8 +29,9 @@ class App {
           return resp.json();
         })
         .then(data => {
-          this.fetchWeather(data.coord.lat, data.coord.lon);
-          this.settingMap(data.coord.lat, data.coord.lon);
+          let { lat, lon } = data.coord;
+          this.fetchWeather(lat, lon);
+          this.settingMap(lat, lon);
         })
         .catch(console.err);
 
@@ -40,7 +41,7 @@ class App {
 
   fetchWeather(latitude, longitude) {
     let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=2a52edbb2af941ad8cc08ee23866301c&units=${this
-      .units}&lang=${this.lang}`;
+      .units}&lang=${this.language}`;
 
     fetch(url)
       .then(resp => {
@@ -54,6 +55,7 @@ class App {
   }
 
   displayWeather(data) {
+    console.log(data);
     let forecast = "";
     data.daily.map((day, index) => {
       let date = new Date(day.dt * 1000);
@@ -98,7 +100,7 @@ class App {
   }
 }
 
-const weather = new App();
+const weather = new App("2a52edbb2af941ad8cc08ee23866301c", "en", "metric");
 
 weather.currentPosition();
 weather.form.addEventListener("submit", function(ev) {
