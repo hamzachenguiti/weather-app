@@ -1,5 +1,5 @@
 # Weather App
-This app will help to know about today weather and next 7 days forecast in your current position, and any position you want by entring the city or country name in the search bar.
+This app will help to know about today weather and next 7 days forecast in your current position, and any position you want by entering the city name in the search bar.
 
 ### Technologies:
 - HTML, CSS, Vanilla JavaScript.
