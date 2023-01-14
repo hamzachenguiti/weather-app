@@ -10,7 +10,7 @@ class App {
   }
 
   currentPosition() {
-    navigator.geolocation.getCurrentPosition(success => {
+    navigator.geolocation.getCurrentPosition((success) => {
       let { latitude, longitude } = success.coords;
       this.fetchWeather(latitude, longitude);
       this.settingMap(latitude, longitude);
@@ -20,15 +20,14 @@ class App {
   getDataByCityName() {
     let location = this.searchInput.value;
     if (location !== "") {
-      let url = `http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${this
-        .key}&units=${this.units}&lang=${this.language}`;
+      let url = `http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${this.key}&units=${this.units}&lang=${this.language}`;
 
       fetch(url)
-        .then(resp => {
+        .then((resp) => {
           if (!resp.ok) throw new Error(resp.statusText);
           return resp.json();
         })
-        .then(data => {
+        .then((data) => {
           let { lat, lon } = data.coord;
           this.fetchWeather(lat, lon);
           this.settingMap(lat, lon);
@@ -40,15 +39,14 @@ class App {
   }
 
   fetchWeather(latitude, longitude) {
-    let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=2a52edbb2af941ad8cc08ee23866301c&units=${this
-      .units}&lang=${this.language}`;
+    let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=2a52edbb2af941ad8cc08ee23866301c&units=${this.units}&lang=${this.language}`;
 
     fetch(url)
-      .then(resp => {
+      .then((resp) => {
         if (!resp.ok) throw new Error(resp.statusText);
         return resp.json();
       })
-      .then(data => {
+      .then((data) => {
         this.displayWeather(data);
       })
       .catch(console.err);
@@ -64,8 +62,9 @@ class App {
         <div class="weather">
           <div class="details">
             <h1>${data.timezone}</h1>
-            <img src="http://openweathermap.org/img/wn/${day.weather[0]
-              .icon}@2x.png" alt=${day.weather[0].description}>
+            <img src="http://openweathermap.org/img/wn/${
+              day.weather[0].icon
+            }@2x.png" alt=${day.weather[0].description}>
             <h2>${date.toDateString()}</h2>
             <p>Day: ${parseInt(day.temp.day)} &#8451;</p>
             <p>Night: ${parseInt(day.temp.night)} &#8451;</p>
@@ -77,8 +76,9 @@ class App {
         forecast += `
           <div class="weather-forecast-item">
             <h2>${date.toDateString()}</h2>
-            <img src="http://openweathermap.org/img/wn/${day.weather[0]
-              .icon}@2x.png" alt=${day.weather[0].description}@>
+            <img src="http://openweathermap.org/img/wn/${
+              day.weather[0].icon
+            }@2x.png" alt=${day.weather[0].description}@>
             <p>Day: ${parseInt(day.temp.day)} &#8451;</p>
             <p>Night: ${parseInt(day.temp.night)} &#8451;</p>
           </div>
@@ -94,16 +94,19 @@ class App {
     const map = new mapboxgl.Map({
       container: "map",
       style: "mapbox://styles/mapbox/streets-v11",
-      center: [ longitude, latitude ],
+      center: [longitude, latitude],
       zoom: 5,
     });
+    const marker = new mapboxgl.Marker()
+      .setLngLat([longitude, latitude])
+      .addTo(map);
   }
 }
 
 const weather = new App("2a52edbb2af941ad8cc08ee23866301c", "en", "metric");
 
 weather.currentPosition();
-weather.form.addEventListener("submit", function(ev) {
+weather.form.addEventListener("submit", function (ev) {
   ev.preventDefault();
   weather.getDataByCityName();
 });
